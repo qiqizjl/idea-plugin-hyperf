@@ -1,0 +1,47 @@
+<idea-plugin>
+    <id>com.naixiaoxin.idea.hyperf</id>
+    <name>Hyperf</name>
+    <vendor email="i@naixiaoxin.com" url="http://www.naixiaoxin.com">NaiXiaoXin(SeanWang)</vendor>
+
+    <description><![CDATA[ Hyperf Plugin For Hyperf(https://hyperf.wiki)]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <projectConfigurable instance="com.naixiaoxin.idea.hyperf.ui.HyperfProjectSettingsForm"
+                             id="Hyperf.SettingsForm"
+                             displayName="Hyperf"
+                             parentId="reference.webide.settings.project.settings.php"
+                             nonDefaultProject="true"
+        />
+        <completion.contributor language="any"
+                                implementationClass="fr.adrienbrault.idea.symfony2plugin.codeInsight.completion.CompletionContributor"/>
+        <gotoDeclarationHandler
+                implementation="fr.adrienbrault.idea.symfony2plugin.codeInsight.navigation.GotoHandler"/>
+
+        <projectService serviceImplementation="com.naixiaoxin.idea.hyperf.HyperfSettings"/>
+        <fileBasedIndex implementation="com.naixiaoxin.idea.hyperf.stub.ConfigKeyStubIndex"/>
+
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+
+    <idea-version since-build="173.4127"/>
+
+    <depends>com.jetbrains.php</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.jetbrains.php.blade</depends>
+
+    <project-components>
+        <component>
+            <implementation-class>com.naixiaoxin.idea.hyperf.HyperfProjectComponent</implementation-class>
+        </component>
+    </project-components>
+</idea-plugin>
