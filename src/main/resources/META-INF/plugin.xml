@@ -3,8 +3,33 @@
     <name>Hyperf</name>
     <vendor email="i@naixiaoxin.com" url="http://www.naixiaoxin.com">NaiXiaoXin(SeanWang)</vendor>
 
-    <description><![CDATA[ Hyperf Plugin For Hyperf(https://hyperf.wiki)]]></description>
+    <description><![CDATA[
+      <h1>Hyperf Plugin</h1><br>
+    <br/>
+    <a href="https://github.com/qiqizjl/idea-plugin-hyperf/issues">Issues</a>
+    <br/>
 
+      <h2>Install</h2>
+      <ul>
+        <li>Install plugin and active it per Project under "Settings > Languages & Frameworks > PHP > Hyperf"</li>
+        <li>Configure root translation directory, if not using default file structure</li>
+        <li>(Enable autopopup for completion in plugin setting)</li>
+      </ul>
+      <br>
+
+      <h2>Features</h2>
+      <ul>
+        <li>PHP/Route: Controller completion and goto</li>
+        <li>PHP/Config: Config key indexer, completion and goto</li>
+        <li>PHP/Translation: Translation key indexer, completion and goto</li>
+      </ul>
+
+      <h2>Todo</h2>
+      <ul>
+        <li>More TestCase</li>
+      </ul>
+
+    ]]></description>
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <!-- uncomment to enable plugin in all products
@@ -25,6 +50,7 @@
 
         <projectService serviceImplementation="com.naixiaoxin.idea.hyperf.HyperfSettings"/>
         <fileBasedIndex implementation="com.naixiaoxin.idea.hyperf.stub.ConfigKeyStubIndex"/>
+        <fileBasedIndex implementation="com.naixiaoxin.idea.hyperf.stub.TranslationKeyStubIndex" />
 
         <!-- Add your extensions here -->
     </extensions>
@@ -37,7 +63,6 @@
 
     <depends>com.jetbrains.php</depends>
     <depends>com.intellij.modules.platform</depends>
-    <depends>com.jetbrains.php.blade</depends>
 
     <project-components>
         <component>

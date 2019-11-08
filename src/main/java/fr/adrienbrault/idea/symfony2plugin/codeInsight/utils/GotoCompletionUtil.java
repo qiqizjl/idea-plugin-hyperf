@@ -3,6 +3,7 @@ package fr.adrienbrault.idea.symfony2plugin.codeInsight.utils;
 import com.intellij.psi.PsiElement;
 import com.naixiaoxin.idea.hyperf.config.ConfigReferences;
 import com.naixiaoxin.idea.hyperf.controller.ControllerReferences;
+import com.naixiaoxin.idea.hyperf.translation.TranslationReferences;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionContributor;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionLanguageRegistrar;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionRegistrar;
@@ -16,6 +17,7 @@ public class GotoCompletionUtil {
     private static GotoCompletionRegistrar[] CONTRIBUTORS = new GotoCompletionRegistrar[]{
             new ControllerReferences(),
             new ConfigReferences(),
+            new TranslationReferences(),
 
     };
 

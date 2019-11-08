@@ -12,6 +12,7 @@ import com.intellij.util.indexing.FileBasedIndex;
 import com.jetbrains.php.lang.PhpFileType;
 import com.jetbrains.php.lang.PhpLanguage;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
+import com.naixiaoxin.idea.hyperf.HyperfIcons;
 import com.naixiaoxin.idea.hyperf.HyperfProjectComponent;
 import com.naixiaoxin.idea.hyperf.stub.ConfigKeyStubIndex;
 import com.naixiaoxin.idea.hyperf.stub.processor.CollectProjectUniqueKeys;
@@ -66,8 +67,8 @@ public class ConfigReferences implements GotoCompletionLanguageRegistrar {
             final Collection<LookupElement> lookupElements = new ArrayList<>();
             CollectProjectUniqueKeys ymlProjectProcessor = new CollectProjectUniqueKeys(getProject(), ConfigKeyStubIndex.KEY);
             FileBasedIndex.getInstance().processAllKeys(ConfigKeyStubIndex.KEY, ymlProjectProcessor, getProject());
-            for(String key: ymlProjectProcessor.getResult()) {
-                lookupElements.add(LookupElementBuilder.create(key));
+            for (String key : ymlProjectProcessor.getResult()) {
+                lookupElements.add(LookupElementBuilder.create(key).withIcon(HyperfIcons.CONFIG));
             }
 
 
@@ -80,18 +81,18 @@ public class ConfigReferences implements GotoCompletionLanguageRegistrar {
 
             final Set<PsiElement> targets = new HashSet<>();
             final String contents = element.getContents();
-            if(StringUtils.isBlank(contents)) {
+            if (StringUtils.isBlank(contents)) {
                 return targets;
             }
 
             FileBasedIndex.getInstance().getFilesWithKey(ConfigKeyStubIndex.KEY, Collections.singleton(contents), virtualFile -> {
                 PsiFile psiFileTarget = PsiManager.getInstance(getProject()).findFile(virtualFile);
-                if(psiFileTarget == null) {
+                if (psiFileTarget == null) {
                     return true;
                 }
 
                 psiFileTarget.acceptChildren(new ArrayReturnPsiRecursiveVisitor(ConfigFileUtil.matchConfigFile(getProject(), virtualFile).getKeyPrefix(), (key, psiKey, isRootElement) -> {
-                    if(!isRootElement && key.equals(contents)) {
+                    if (!isRootElement && key.equals(contents)) {
                         targets.add(psiKey);
                     }
                 }));

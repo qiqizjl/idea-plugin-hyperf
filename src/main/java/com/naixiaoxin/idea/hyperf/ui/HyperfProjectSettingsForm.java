@@ -25,6 +25,9 @@ public class HyperfProjectSettingsForm implements Configurable {
     private JCheckBox enabled;
     private JPanel panel1;
 
+    private JTextField textTranslationLang;
+    private JTextField textTranslationPath;
+
     @Nls
     @Override
     public String getDisplayName() {
@@ -45,12 +48,19 @@ public class HyperfProjectSettingsForm implements Configurable {
 
     @Override
     public boolean isModified() {
-        return !enabled.isSelected() == getSettings().pluginEnabled;
+        return !enabled.isSelected() == getSettings().pluginEnabled
+                || !textTranslationLang.getText().equals(getSettings().translationLang)
+                || !textTranslationPath.getText().equals(getSettings().translationPath)
+                ;
+
     }
 
     @Override
     public void apply() throws ConfigurationException {
         getSettings().pluginEnabled = enabled.isSelected();
+        getSettings().translationLang = textTranslationLang.getText();
+        getSettings().translationPath = textTranslationPath.getText();
+
     }
 
     @Override
@@ -60,6 +70,8 @@ public class HyperfProjectSettingsForm implements Configurable {
 
     private void updateUIFromSettings() {
         enabled.setSelected(getSettings().pluginEnabled);
+        textTranslationLang.setText(getSettings().translationLang);
+        textTranslationPath.setText(getSettings().translationPath);
     }
 
     @Override

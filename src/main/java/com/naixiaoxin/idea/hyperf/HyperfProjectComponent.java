@@ -2,12 +2,15 @@ package com.naixiaoxin.idea.hyperf;
 
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.psi.PsiElement;
 import com.naixiaoxin.idea.hyperf.util.IdeHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
+
+import java.util.Objects;
 
 /**
  * @author NaiXiaoXin(SeanWang) <i@naixiaoxin.com>
@@ -66,15 +69,16 @@ public class HyperfProjectComponent implements ProjectComponent {
             return true;
         }
 
-        VirtualFile baseDir = project.getBaseDir();
+        VirtualFile baseDir = LocalFileSystem.getInstance().findFileByPath(Objects.requireNonNull(project.getBasePath()));
         return VfsUtil.findRelativeFile(baseDir, "vendor", "hyperf") != null;
     }
 
     private void notifyPluginEnableDialog() {
         // Enable Project dialog
         if (!isEnabled(this.project) && !HyperfSettings.getInstance(this.project).dismissEnableNotification) {
-            if (VfsUtil.findRelativeFile(this.project.getBaseDir(), "app") != null
-                    && VfsUtil.findRelativeFile(this.project.getBaseDir(), "vendor", "hyperf") != null
+            VirtualFile baseDir = LocalFileSystem.getInstance().findFileByPath(Objects.requireNonNull(this.project.getBasePath()));
+            if (VfsUtil.findRelativeFile(baseDir, "app") != null
+                    && VfsUtil.findRelativeFile(baseDir, "vendor", "hyperf") != null
             ) {
                 IdeHelper.notifyEnableMessage(project);
             }

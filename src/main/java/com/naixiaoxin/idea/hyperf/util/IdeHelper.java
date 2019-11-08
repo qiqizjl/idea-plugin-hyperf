@@ -7,7 +7,7 @@ import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
 import com.naixiaoxin.idea.hyperf.HyperfSettings;
 import com.naixiaoxin.idea.hyperf.ui.HyperfProjectSettingsForm;
-import com.sun.istack.NotNull;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * @author NaiXiaoXin(SeanWang) <i@naixiaoxin.com>

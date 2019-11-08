@@ -29,7 +29,9 @@ public class HyperfSettings implements PersistentStateComponent<HyperfSettings> 
 
     public boolean dismissEnableNotification = false;
 
-    public String routerNamespace = "";
+    public String translationLang = "zh_CN";
+    public String translationPath = "/storage/languages";
+
 
     public static HyperfSettings getInstance(@NotNull Project project) {
         return ServiceManager.getService(project, HyperfSettings.class);

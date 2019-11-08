@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.naixiaoxin.idea.hyperf'
-version '0.0.1-SNAPSHOT'
+version '1.0.0'
 
 sourceCompatibility = 1.8
 
@@ -22,21 +22,15 @@ intellij {
     updateSinceUntilBuild false
     plugins = [
             "com.jetbrains.php:${phpPluginVersion}",
-            "com.jetbrains.php.blade:${bladePluginVersion}",
             'CSS',
             'java-i18n',
             'properties'
     ]
     pluginName 'Hyperf Plugin'
 }
-patchPluginXml {
-    changeNotes """
-     <html>
-<ul>
-    <li>支持路由跳转,路由提示</li>
-    <li>支持配置跳转,配置提示</li>
- </ul>
-</html>
+def htmlFixer = { htmlFile -> file(htmlFile).text.replace('<html>', '').replace('</html>', '') }
 
-     """
+patchPluginXml {
+    changeNotes = htmlFixer('./changelog.html')
+
 }

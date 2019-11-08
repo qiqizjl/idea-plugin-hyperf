@@ -43,11 +43,8 @@ public class ControllerCollector {
                     String className = phpClass.getPresentableFQN();
                     String methodName = method.getName();
                     if (!method.isStatic() && method.getAccess().isPublic() && !methodName.startsWith("__")) {
-                        PhpClass phpTrait = method.getContainingClass();
-                        if (phpTrait == null) {
-                            if (StringUtils.isNotBlank(className)) {
-                                visitor.visit(phpClass, method);
-                            }
+                        if (StringUtils.isNotBlank(className)) {
+                            visitor.visit(phpClass, method);
                         }
                     }
                 }

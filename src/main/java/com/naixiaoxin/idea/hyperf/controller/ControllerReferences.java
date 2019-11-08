@@ -105,8 +105,7 @@ public class ControllerReferences implements GotoCompletionLanguageRegistrar {
                             controllerFunction = StringUtils.stripStart(controllerFunction, "\\");
                         }
                         LookupElementBuilder lookupElementBuilder = LookupElementBuilder.create(controllerFunction)
-                                .withIcon(HyperfIcons.ROUTE)
-                                .withTypeText(phpClass.getPresentableFQN(), true);
+                                .withIcon(HyperfIcons.CONTROLLER);
 
                         Parameter[] parameters = method.getParameters();
                         if (parameters.length > 0) {
