@@ -13,19 +13,10 @@ import java.util.regex.Pattern;
  */
 public class TranslationUtil {
 
-    private static final Pattern[] PATTERNS = new Pattern[]{
-            Pattern.compile(".*/lang/(\\w{2}|\\w{2}[_|-]\\w{2})/(.*)\\.php$"),
-            Pattern.compile(".*/lang/packages/(\\w{2}|\\w{2}[_|-]\\w{2})/\\w+/(.*)\\.php$")
-    };
-
     /**
-     * app/lang/fr_FR/messages.php
-     * app/lang/fr/messages.php
-     * app/lang/packages/en/hearthfire/messages.php
-     * app/lang/packages/fr_FR/hearthfire/messages.php
-     * app/lang/packages/fr_FR/admin/hearthfire/messages.php
+     * zh_CN/message.php
      *
-     * @return "hearthfire/messages"
+     * @return "message"
      */
     @Nullable
     public static String getNamespaceFromFilePath(@NotNull String path, Project project) {

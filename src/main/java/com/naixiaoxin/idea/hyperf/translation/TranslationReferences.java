@@ -48,7 +48,7 @@ public class TranslationReferences implements GotoCompletionLanguageRegistrar {
             if (!HyperfProjectComponent.isEnabled(psiElement)) {
                 return null;
             }
-            // 无插件不开启
+            // only install hyperf/translation
             VirtualFile baseDir = LocalFileSystem.getInstance().findFileByPath(Objects.requireNonNull(psiElement.getProject().getBasePath()));
             if (VfsUtil.findRelativeFile(baseDir, "vendor", "hyperf", "translation") == null
             ) {

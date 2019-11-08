@@ -5,6 +5,7 @@ import com.intellij.openapi.project.Project;
 import com.jetbrains.php.PhpIndex;
 import com.jetbrains.php.lang.psi.elements.Method;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
+import com.naixiaoxin.idea.hyperf.util.PhpClassUtil;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,24 +20,7 @@ public class ControllerCollector {
 
     public static void visitControllerActions(@NotNull final Project project, @NotNull ControllerActionVisitor visitor) {
         // 只查询App\Controller中的路由
-        PrefixMatcher prefix = new PrefixMatcher("\\App\\Controller") {
-            @Override
-            public boolean prefixMatches(@NotNull String name) {
-                return name.startsWith(this.myPrefix);
-            }
-
-            @NotNull
-            @Override
-            public PrefixMatcher cloneWithPrefix(@NotNull String prefix) {
-                return null;
-            }
-        };
-        Collection<PhpClass> allControllerClass = new HashSet<PhpClass>() {{
-        }};
-        Collection<String> allController = PhpIndex.getInstance(project).getAllClassFqns(prefix);
-        for (String controllerName : allController) {
-            allControllerClass.addAll(PhpIndex.getInstance(project).getClassesByFQN(controllerName));
-        }
+        Collection<PhpClass> allControllerClass = PhpClassUtil.getClassByNamespace(PhpIndex.getInstance(project), "\\App\\Controller");
         for (PhpClass phpClass : allControllerClass) {
             if (!phpClass.isAbstract()) {
                 for (Method method : phpClass.getMethods()) {
