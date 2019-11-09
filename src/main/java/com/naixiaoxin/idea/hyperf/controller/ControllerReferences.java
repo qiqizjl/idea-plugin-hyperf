@@ -13,6 +13,7 @@ import com.jetbrains.php.lang.psi.elements.Method;
 import com.jetbrains.php.lang.psi.elements.Parameter;
 import com.jetbrains.php.lang.psi.elements.PhpClass;
 import com.jetbrains.php.lang.psi.elements.StringLiteralExpression;
+import com.jetbrains.php.lang.psi.elements.impl.PhpPsiElementImpl;
 import com.naixiaoxin.idea.hyperf.HyperfIcons;
 import com.naixiaoxin.idea.hyperf.HyperfProjectComponent;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionContributor;
