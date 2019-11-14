@@ -20,6 +20,7 @@ import com.naixiaoxin.idea.hyperf.util.ArrayReturnPsiRecursiveVisitor;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionLanguageRegistrar;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionProvider;
 import fr.adrienbrault.idea.symfony2plugin.codeInsight.GotoCompletionRegistrarParameter;
+import fr.adrienbrault.idea.symfony2plugin.codeInsight.utils.PhpElementsUtil;
 import fr.adrienbrault.idea.symfony2plugin.util.MethodMatcher;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
@@ -51,6 +52,9 @@ public class ConfigReferences implements GotoCompletionLanguageRegistrar {
                 return new ConfigKeyProvider(parent);
             }
 
+            if (parent != null && PhpElementsUtil.isFunctionReference(parent, 0, "config")) {
+                return new ConfigKeyProvider(parent);
+            }
             return null;
         });
     }

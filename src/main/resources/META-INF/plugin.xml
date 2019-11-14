@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.naixiaoxin.idea.hyperf</id>
     <name>Hyperf</name>
-    <vendor email="i@naixiaoxin.com" url="http://www.naixiaoxin.com">NaiXiaoXin(SeanWang)</vendor>
+    <vendor email="group@hyperf.io" url="https://www.hyperf.io">Hyperf Team</vendor>
 
     <description><![CDATA[
       <h1>Hyperf Plugin</h1><br>
