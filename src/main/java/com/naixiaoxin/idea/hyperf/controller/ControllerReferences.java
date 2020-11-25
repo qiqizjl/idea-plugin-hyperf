@@ -37,11 +37,11 @@ public class ControllerReferences implements GotoCompletionLanguageRegistrar {
     // 定义路由函数
     private static MethodMatcher.CallToSignature[] ROUTE = new MethodMatcher.CallToSignature[]{
             new MethodMatcher.CallToSignature("\\Hyperf\\HttpServer\\Router\\Router", "get"),
-            new MethodMatcher.CallToSignature("\\yperf\\HttpServer\\Router\\Router", "post"),
-            new MethodMatcher.CallToSignature("\\yperf\\HttpServer\\Router\\Router", "put"),
-            new MethodMatcher.CallToSignature("\\yperf\\HttpServer\\Router\\Router", "patch"),
-            new MethodMatcher.CallToSignature("\\yperf\\HttpServer\\Router\\Router", "delete"),
-            new MethodMatcher.CallToSignature("\\yperf\\HttpServer\\Router\\Router", "options"),
+            new MethodMatcher.CallToSignature("\\Hyperf\\HttpServer\\Router\\Router", "post"),
+            new MethodMatcher.CallToSignature("\\Hyperf\\HttpServer\\Router\\Router", "put"),
+            new MethodMatcher.CallToSignature("\\Hyperf\\HttpServer\\Router\\Router", "patch"),
+            new MethodMatcher.CallToSignature("\\Hyperf\\HttpServer\\Router\\Router", "delete"),
+            new MethodMatcher.CallToSignature("\\Hyperf\\HttpServer\\Router\\Router", "options"),
     };
 
     private static MethodMatcher.CallToSignature[] RouteAddRoute = new MethodMatcher.CallToSignature[]{
